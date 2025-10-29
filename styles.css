@@ -1,0 +1,83 @@
+
+.montserrat-global-font {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 200,
+  'GRAD' 0,
+  'opsz' 24
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    background-color: #f6f6f6;
+    color: #929091;
+    
+}
+
+.container{
+    display: flex;
+    min-height: 80vh;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem;
+}
+#title{
+    font-size: 3em;
+    padding-bottom: 1em;
+
+}
+#my{
+    color: #5393e8;
+}
+#dot{
+
+    color: black;
+}
+#add-button{
+    display: flex;
+    align-items: center;
+    background-color: #8dcd50;
+    border: none;
+    padding: 0.3em;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px;
+    position: relative;
+    left: 25%;
+    top:1em;
+    cursor: pointer;
+}
+
+#add-button:active{
+    opacity: 0.8;
+}
+#add-button span{
+    background-color: #8dcd50;
+    color: white;
+}
+#grid-title{
+    width: 70vw;
+    border-bottom: 1.5px solid #5393e8;
+    color: #5393e8;
+    font-weight: 300;
+}
+.grid{
+    min-height: 40vh;
+}
+.single-msg-container{
+    min-height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+}
