@@ -4,7 +4,7 @@
 const grid = document.querySelector(".grid");
 let empty_div = document.createElement("div");
 empty_div.innerHTML = "Your Library is currently empty";
-const add_button = document.getElementById("add-button");
+const add_button = document.querySelector(".add-button");
 
 
 
@@ -93,7 +93,7 @@ function removeBook(evt){
 
 function createModalForm(){
 
-    
+
 }
 
 function promptBookInfo(){
