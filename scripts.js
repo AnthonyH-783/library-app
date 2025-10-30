@@ -1,4 +1,14 @@
 /**
+ * Global Variables
+ */
+const grid = document.querySelector(".grid");
+let empty_div = document.createElement("div");
+empty_div.innerHTML = "Your Library is currently empty";
+const add_button = document.getElementById("add-button");
+
+
+
+/**
  * Backend
  */
 
@@ -36,7 +46,86 @@ function Book(author, title, num_pages, is_read, image_url){
     this.image_url = image_url;
 }
 
+// Book Object to frontend div conversion
+function addBookToHTML(book_obj){
+    // Creating required nodes
+    let div = document.createElement("div");
+    let img = document.createElement("img");
+    let span = document.createElement("span");
 
+    // Styling the nodes
+    div.classList.add("grid-item");
+    img.classList.add("book-img");
+    span.classList.add("remove-span");
+    span.innerText = "Remove";
+
+    // Adding book image
+    if(book_obj.image_url !== null){
+        img.src = book_obj.image_url;
+    }
+    else{
+        img.src = "images/no-image-icon.png";
+    }
+
+    // Creating link between image and span
+    span.dataset.book_id = book_obj.book_id;
+
+    // Making DOM connections
+    div.appendChild(img);
+    div.appendChild(span);
+    grid.appendChild(div);
+
+}
+
+function removeBook(evt){
+
+    if(evt.target.nodeName === "SPAN"){
+
+        let book_id = evt.target.dataset.book_id;
+        evt.target.parentNode.remove();
+        book_library.removeBook(book_id);
+
+        if(book_library.size === 0){
+            displayEmptyMessage();
+        }
+    }
+}
+
+function createModalForm(){
+
+    
+}
+
+function promptBookInfo(){
+
+}
+
+// Display Library
+function displayLibrary(book_library){
+
+    if(book_library.size === 0){
+        displayEmptyMessage();
+    }
+    else if(grid.classList.contains("single-msg-container")){
+        switchDisplayToGrid();
+
+    }
+
+    book_library.collection.forEach((book) => {
+        addBookToHTML(book);
+    });
+}
+
+// Creating Book and html element
+
+book_library.addBook("Dan Koe", "The Art of Focus", 400, false, null);
+book_library.addBook("Dan Koe", "The Art of Focus", 400, false, null);
+book_library.addBook("Dan Koe", "The Art of Focus", 400, false, null);
+book_library.addBook("Dan Koe", "The Art of Focus", 400, false, null);
+book_library.addBook("Dan Koe", "The Art of Focus", 400, false, null);
+book_library.addBook("Dan Koe", "The Art of Focus", 400, false, null);
+book_library.addBook("Dan Koe", "The Art of Focus", 400, false, null);
+displayLibrary(book_library);
 
 
 
@@ -48,10 +137,7 @@ function Book(author, title, num_pages, is_read, image_url){
 /**
  * Controller
  */
-const grid = document.querySelector(".grid");
 
-let empty_div = document.createElement("div");
-empty_div.innerHTML = "Your Library is currently empty";
 
 function displayEmptyMessage(){
 
@@ -64,28 +150,19 @@ function displayEmptyMessage(){
     grid.appendChild(empty_div);
 }
 
-function switchDisplayOnFirstBook(){
-    if(Array.from(nodes).find(node => node.isEqualNode(nodeToFind))){
-        empty_div.remove();
-    }
+function switchDisplayToGrid(){
+
     grid.classList.remove("single-msg-container");
     grid.classList.add("grid");
 }
 
-function displayCollection(library_obj){
-    
-    const collection_arr = library_obj.collection;
-    collection_arr.forEach(book_obj => {
-        let book_card = document.createElement("div");
-        book_card.classList.add("book-card")
-        
-    });
-}
-function createBookCard(book_obj){
+grid.addEventListener("click", removeBook);
 
+
+
+
+if(book_library.size === 0){
+    displayEmptyMessage();
 }
 
-displayEmptyMessage();
-let arr = [1,2,3];
-let index = arr.findIndex((element) => element === 4);
-console.log(index);
+

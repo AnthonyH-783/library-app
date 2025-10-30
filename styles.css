@@ -46,6 +46,7 @@
     background-color: #8dcd50;
     border: none;
     padding: 0.3em;
+    margin-bottom: 3em;
     border-radius: 5px;
     box-shadow: 1px 1px 1px;
     position: relative;
@@ -69,12 +70,44 @@
 }
 .grid{
     min-height: 40vh;
+    max-width: 70%;
+    gap: 1em;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    
+}
+.grid-item{
+    height: 15em;
+    border: 1px solid black;
+    position: relative;
+
+
 }
 .single-msg-container{
     min-height: 40vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.book-img{
+    width: 100%;
+    height: 100%;
+}
+.remove-span{
+    position: absolute;
+    background-color: rgba(27, 26, 26, 0.39);
+    color: #f6f6f6;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+}
+.grid-item:hover .remove-span{
+    visibility: visible;
+    cursor: pointer;
+}
+.grid-item:hover .remove-span:active{
+    background-color: rgba(27, 26, 26, 0.703);;
 }
 
 footer{
