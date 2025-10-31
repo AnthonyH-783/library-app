@@ -18,6 +18,15 @@
   'GRAD' 0,
   'opsz' 24
 }
+
+.material-symbols-cross {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
 *{
     margin:0;
     padding:0;
@@ -183,7 +192,17 @@ form .add-button {
     align-self: self-end;
 }
 
+#cross{
+    position: absolute;
+    top:1em;
+    right: 1em;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+
 footer{
     display: flex;
     justify-content: center;
+    
 }
