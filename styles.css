@@ -95,6 +95,7 @@
     height: 15em;
     border: 1px solid black;
     position: relative;
+    cursor: pointer;
 
 
 }
@@ -192,13 +193,22 @@ form .add-button {
     align-self: self-end;
 }
 
-#cross{
+.cross{
     position: absolute;
     top:1em;
     right: 1em;
     color: black;
     background-color: white;
     cursor: pointer;
+}
+#info-card{
+    width: 30%;
+    margin-left: 10%;
+
+}
+#info-card p {
+        color: black;
+    background-color: white;
 }
 
 footer{

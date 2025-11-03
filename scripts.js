@@ -56,6 +56,11 @@ function Book(author, title, num_pages, is_read, image_url){
 
 // Book Object to frontend div conversion
 function addBookToHTML(book_obj){
+    // Check for empty display
+    if(grid.classList.contains("single-msg-container")){
+        switchDisplayToGrid();
+        
+    }
     // Creating required nodes
     let div = document.createElement("div");
     let img = document.createElement("img");
@@ -180,7 +185,7 @@ book_library.addBook("Dan Koe", "The Art of Focus", 400, false, null);
 book_library.addBook("Dan Koe", "The Art of Focus", 400, false, null);
 book_library.addBook("Dan Koe", "The Art of Focus", 400, false, null);
 displayLibrary(book_library);
-document.getElementById("cross").addEventListener("click", cancelInputForm);
+document.getElementById("cancel-form").addEventListener("click", cancelInputForm);
 
 
 
@@ -205,18 +210,44 @@ function displayEmptyMessage(){
 }
 
 function switchDisplayToGrid(){
-
+    empty_div.remove();
     grid.classList.remove("single-msg-container");
     grid.classList.add("grid");
 }
 
 grid.addEventListener("click", removeBook);
+const info = document.getElementById("info-card");
+const collection = Array.from(info.children[0].children).slice(1,5);
+function resetInfoCard(){
 
-
-
-
-
-if(book_library.size === 0){
-    displayEmptyMessage();
+    for(node of collection){
+        node.innerHTML = node.innerHTML.split(":")[0] + ":";
+    }        
+    document.querySelector("#info-card").classList.add("hidden");
+    document.querySelector(".overlay").classList.add("hidden");  
 }
+function showBookInfo(evt){
+
+    if(evt.target.nodeName === "IMG"){
+        const book = book_library.findBook(evt.target.dataset.book_id);
+    
+        
+        const idx_map = {0: "author", 1: "title", 2: "num_pages", 3: "is_read"};
+        for(let i = 0; i < collection.length; i++){
+            let value = book[idx_map[i]]; // one of {author,title,num_pages, is_read}
+            if(typeof(value) === "boolean"){
+                value = (value) ? "yes":"no";
+            }
+            collection[i].innerHTML += " " + value;
+        }
+        document.querySelector("#info-card").classList.remove("hidden");
+        document.querySelector(".overlay").classList.remove("hidden");
+        
+    }
+}
+
+grid.addEventListener("click", showBookInfo);
+document.getElementById("close-book-info").addEventListener("click", resetInfoCard);
+
+
 
