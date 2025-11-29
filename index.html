@@ -12,7 +12,7 @@
     <title>Library App</title>
 </head>
 <body>
-    <div class="container montserrat-global-font">
+    <div id="main" class="container montserrat-global-font">
         <h1 id="title" ><span id="my">My</span><span id="dot">&CircleDot;</span>Library</h1>
         <h2 id="grid-title">Current Collection</h2>
         <button id="open-modal" class="add-button"><span class="material-symbols-outlined">add_box</span>
@@ -22,7 +22,7 @@
 
         </div>
     </div>
-    <section class="modal hidden montserrat-input-font">
+    <section id="add-card" class="modal hidden montserrat-input-font">
         <div class="flex-col">
             <h3>Add a book to your library</h3>
             <form class="flex-row" action="">
@@ -36,7 +36,7 @@
              
                 </div>
                 <div class="form-row">
-                    <label for="page_num">Page #</label>
+                    <label for="num_pages">Page #</label>
       
                 </div>
                 <div class="form-row">
@@ -60,14 +60,14 @@
                     </div>
                     <div class="form-row">
                 
-                        <input class="montserrat-input-font" type="number" name="page_num" required>
+                        <input class="montserrat-input-font" type="number" name="num_pages" required>
                     </div>
                     <div class="form-row">
                     
                         <input class="montserrat-input-font" type="url" name="image_url">
                     </div>
                     <div class="form-row">
-                        <button id="close-modal" class="add-button"><span class="material-symbols-outlined">add_box</span>
+                        <button id="form-submit" class="add-button"><span class="material-symbols-outlined">add_box</span>
                         <span class="montserrat-input-font">Add Book</span></button>
     
                     </div>
