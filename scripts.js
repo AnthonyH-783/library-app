@@ -239,12 +239,34 @@ class BookDom{
 
 
     // DOM Functions
+
+    function createBookDOM(book_obj){
+
+        const div = document.createElement("div");
+        const img = document.createElement("img");
+        const span = document.createElement("span");
+
+        // Styling the nodes
+        div.classList.add("grid-item");
+        img.classList.add("book-img");
+        span.classList.add("remove-span");
+        span.innerText = "Remove";
+
+        // Creating link between image and span
+        span.dataset.book_id = book_obj.book_id;
+        img.dataset.book_id = book_obj.book_id;
+
+        // Making DOM connections
+        div.appendChild(img);
+        div.appendChild(span);
+        return div;
+}
     function addBookToHTML(book){
         if(isGridEmpty()){
             switchDisplayToGrid();
         }
         // Create grid item
-        const book_div = new BookDom(book);
+        const book_div = createBookDOM(book);
         // Setting image
         const img = book_div.querySelector("img");
         const NO_IMG = "images/no-image-icon.png";
